@@ -1,0 +1,46 @@
+general changes :
+1. Add the following function to the right Object:
+- add AddColumn() 
+- add RenameColumn() 
+- add MoveColumn() 
+- add RemoveColumn()  
+explanation - a must functions for the new Requirements
+
+serviceLayer:
+
+service (object):
+
+SBoard:
+1. removed Columns List
+2. added ColumnCount
+
+SColumn:
+1. removed Task List
+2. added Ordinal
+
+
+bussinesLayer:
+
+genenral:
+1. reworked all the Objects to implement interfaces. All connection between object is based on their interfaces and addition of new objects is more OOP
+2. added function Persist to all objects, so creation can be separate from the write to DB
+
+
+UserController:
+1. added ForbiddenPasswords list
+
+Dal Layer:
+
+general Chenges:
+1. added ConfigReader to read configuration files such as ForbiddenPasswords.txt
+
+DColumn:
+add overide Remove(): void - needed to not only to delete herself but change Task as well
+Add Change TaskOrdinal : void - we needed one deleting or moving a column places to change the ordinal of its task.
+
+
+DTask:
+Add - ReduceOrdinal(): we need to reduce the ordinal when deleting columns
+ConfigReader:
+Adding the Objcet - we needed an object to reed the external file, who has the forbidden Paswwords
+

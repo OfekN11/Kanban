@@ -1,0 +1,141 @@
+﻿<Window x:Class="IntroSE.Kanban.Frontend.View.InProgressTasksView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:IntroSE.Kanban.Frontend.View"
+        mc:Ignorable="d"
+        Title="InProgressTasksView" Height="450" Width="800">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="\Images\Board_Background.png" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Viewbox>
+                <Label Content="In progress Task" HorizontalAlignment="Center" RenderTransformOrigin="0.491,0.499"/>
+            </Viewbox>
+
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <ListBox ItemsSource="{Binding Path=Tasks, Mode=OneWay}" SelectedItem="{Binding Path=SelectedTask, Mode=OneWayToSource}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="#FF003CFF" BorderThickness="1">
+                            <StackPanel Orientation="Vertical" >
+                                <Label Content="{Binding Path=Title, Mode=OneWay}"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+                    <Label Content="ID:" Margin="0,0,0,-11"/>
+                </Grid>
+
+                <Grid Grid.Column="1">
+                    <Label Content="{Binding Path=ID, Mode=OneWay}"/>
+                </Grid>
+
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0" Margin="0,0,0,-10">
+                    <Label Content="CreationTime:" HorizontalAlignment="Right" />
+                </Grid>
+
+                <Grid Grid.Column="1">
+                    <Label Content="{Binding Path=CreationTime, Mode=OneWay}"/>
+                </Grid>
+
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+                    <Label Content="Description:" />
+                </Grid>
+
+                <Grid Grid.Column="1">
+                    <Label Content="{Binding Path=Description, Mode=OneWay}"/>
+                </Grid>
+
+            </Grid>
+
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+                    <Label Content="Due Date:" Margin="0,0,0,-11" />
+                </Grid>
+
+                <Grid Grid.Column="1">
+                    <Label Content="{Binding Path=DueDate, Mode=OneWay}"/>
+                </Grid>
+
+            </Grid>
+
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+                    <Label Content="Assignee:" Margin="0,0,0,-11" />
+                </Grid>
+
+                <Grid Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="97*"/>
+                        <ColumnDefinition Width="303*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="{Binding Path=EmailAssignee, Mode=OneWay}" Grid.ColumnSpan="2"/>
+                </Grid>
+
+            </Grid>
+
+
+            <Grid Grid.Row="5">
+                <Button Content="Exit" Click="Exit_Click"></Button>
+
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
